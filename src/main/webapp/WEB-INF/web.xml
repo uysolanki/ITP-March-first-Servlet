@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+ 	<servlet>
+        <servlet-name>kohli</servlet-name>
+        <servlet-class>Add</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>kohli</servlet-name>
+        <url-pattern>/virat</url-pattern>
+    </servlet-mapping>
+
+</web-app>
