@@ -3,8 +3,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Add
+ * Servlet implementation class LoginServlet1
  */
-@WebServlet("/Add")
-public class Add extends HttpServlet {
+@WebServlet("/LoginServlet1")
+public class LoginServlet1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Add() {
+    public LoginServlet1() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,27 +31,22 @@ public class Add extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
-		int n1=Integer.parseInt(request.getParameter("t1"));
-		int n2=Integer.parseInt(request.getParameter("t2"));
-		int sum=n1+n2;
-		out.print(sum);
+		String username=request.getParameter("t1");
+		String password=request.getParameter("t2");
 		
-		ServletContext context=getServletContext();
-		int numL=Integer.parseInt(context.getInitParameter("l"));
-		int numM=Integer.parseInt(context.getInitParameter("m"));
-		System.out.println(numL);
-		System.out.println(numM);
-		out.print(numL+"<br>");
-		out.print(numM+"<br>");
-		
-		ServletConfig config=getServletConfig();
-		int numX=Integer.parseInt(config.getInitParameter("x"));
-		int numY=Integer.parseInt(config.getInitParameter("y"));
-		System.out.println(numX+);
-		System.out.println(numY);
-		out.print(numX+"<br>");
-		out.print(numY+"<br>");
-		
+		if(username.equals(password))
+		{
+			//out.print("Login success");
+//			RequestDispatcher rd=request.getRequestDispatcher("/welcomepage.html");
+//			rd.forward(request, response);
+			response.sendRedirect("https://www.google.com/search?q="+username);
+		}
+		else
+		{
+			out.println("<font color='red' >Invalid Credentials</font>");
+			RequestDispatcher rd=request.getRequestDispatcher("virat");
+			rd.include(request, response);
+		}
 	}
 
 	/**
