@@ -48,7 +48,7 @@ public class Add extends HttpServlet {
 		ServletConfig config=getServletConfig();
 		int numX=Integer.parseInt(config.getInitParameter("x"));
 		int numY=Integer.parseInt(config.getInitParameter("y"));
-		System.out.println(numX+);
+		System.out.println(numX);
 		System.out.println(numY);
 		out.print(numX+"<br>");
 		out.print(numY+"<br>");

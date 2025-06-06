@@ -34,19 +34,19 @@ public class LoginServlet1 extends HttpServlet {
 		String username=request.getParameter("t1");
 		String password=request.getParameter("t2");
 		
-		if(username.equals(password))
-		{
+			if(username.equals(password))
+			{
 			//out.print("Login success");
 //			RequestDispatcher rd=request.getRequestDispatcher("/welcomepage.html");
 //			rd.forward(request, response);
 			response.sendRedirect("https://www.google.com/search?q="+username);
-		}
-		else
-		{
+			}
+			else
+			{
 			out.println("<font color='red' >Invalid Credentials</font>");
 			RequestDispatcher rd=request.getRequestDispatcher("virat");
 			rd.include(request, response);
-		}
+			}
 	}
 
 	/**
