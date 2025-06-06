@@ -61,5 +61,58 @@
         <filter-name>ValidFilter</filter-name>
         <url-pattern>/login</url-pattern>
     </filter-mapping>
+    
+    
+     <servlet>
+        <servlet-name>swapnil</servlet-name>
+        <servlet-class>LoginURL</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>swapnil</servlet-name>
+        <url-pattern>/loginurlrw</url-pattern>
+    </servlet-mapping>
+    
+    
+     <servlet>
+        <servlet-name>shopping</servlet-name>
+        <servlet-class>ShoppingServlet</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>shopping</servlet-name>
+        <url-pattern>/shop</url-pattern>
+    </servlet-mapping>
+    
+    
+     <servlet>
+         <servlet-name>payment</servlet-name>
+        <servlet-class>PaymentServlet</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>payment</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+         <servlet-name>LoginHFNew</servlet-name>
+        <servlet-class>LoginHFServlet</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>LoginHFNew</servlet-name>
+        <url-pattern>/loginhfnew</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+         <servlet-name>ShopHF</servlet-name>
+        <servlet-class>ShoppingHFServlet</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>ShopHF</servlet-name>
+        <url-pattern>/shophf</url-pattern>
+    </servlet-mapping>
 
 </web-app>
