@@ -114,5 +114,35 @@
         <servlet-name>ShopHF</servlet-name>
         <url-pattern>/shophf</url-pattern>
     </servlet-mapping>
+    
+     <servlet>
+          <servlet-name>AddEmployee</servlet-name>
+        <servlet-class>AddEmployeeServlet</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>AddEmployee</servlet-name>
+        <url-pattern>/addemp</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+          <servlet-name>ShowEmployees</servlet-name>
+        <servlet-class>ShowAllEmployees</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>ShowEmployees</servlet-name>
+        <url-pattern>/showAllEmployees</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteEmployee</servlet-name>
+        <servlet-class>DeleteEmployeeServlet</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>DeleteEmployee</servlet-name>
+        <url-pattern>/deleteemp</url-pattern>
+    </servlet-mapping>
 
 </web-app>
