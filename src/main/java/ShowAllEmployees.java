@@ -49,6 +49,8 @@ public class ShowAllEmployees extends HttpServlet {
 			out.print("<td>Employee No</td>");
 			out.print("<td>Employee Name</td>");
 			out.print("<td>Employee Salary</td>");
+			out.print("<td>Delete</td>");
+			out.print("<td>Update</td>");
 			out.print("</tr>");
 			out.print("</thead>");
 			while(rs.next())
@@ -57,6 +59,8 @@ public class ShowAllEmployees extends HttpServlet {
 				out.print("<td>"+ rs.getInt(1) +"</td>");
 				out.print("<td>"+ rs.getString(2) +"</td>");
 				out.print("<td>"+ rs.getInt(3) +"</td>");
+				out.print("<td><a href='deleteemp?t1=" + rs.getInt(1) + "' class='btn btn-danger'>Delete</a></td>");
+				out.print("<td><a href='deleteemp?t1=" + rs.getInt(1) + "' class='btn btn-secondary'>Update</a></td>");
 				out.print("</tr>");
 			}
 			out.print("</table>");
