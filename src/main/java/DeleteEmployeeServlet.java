@@ -1,5 +1,6 @@
 
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -37,7 +38,7 @@ public class DeleteEmployeeServlet extends HttpServlet {
 		
 		
 		try {
-			Connection con=MySQLConnectionITP.getConnection();
+			Connection con=MySQLConnectionITP.getConnection(getServletContext());
 			String query="delete from emp where eno= ?";
 			PreparedStatement ps=con.prepareStatement(query);
 			ps.setInt(1, eno);

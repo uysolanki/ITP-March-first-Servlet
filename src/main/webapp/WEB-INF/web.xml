@@ -2,13 +2,23 @@
 <web-app>
 
 		<context-param>
-        	<param-name>l</param-name>
-        	<param-value>500</param-value>
+        	<param-name>driverName</param-name>
+        	<param-value>com.mysql.jdbc.Driver</param-value>
         </context-param>
         
         <context-param>
-        	<param-name>m</param-name>
-        	<param-value>600</param-value>
+        	<param-name>dbUrl</param-name>
+        	<param-value>jdbc:mysql://localhost:3306/itpmarch2025db</param-value>
+        </context-param>
+        
+        <context-param>
+        	<param-name>dbUserName</param-name>
+        	<param-value>root</param-value>
+        </context-param>
+        
+        <context-param>
+        	<param-name>dbPassword</param-name>
+        	<param-value></param-value>
         </context-param>
         
  	<servlet>
@@ -143,6 +153,46 @@
      <servlet-mapping>
         <servlet-name>DeleteEmployee</servlet-name>
         <url-pattern>/deleteemp</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LoginSession</servlet-name>
+        <servlet-class>LoginSessionServlet</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>LoginSession</servlet-name>
+        <url-pattern>/loginsession</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+         <servlet-name>ShopSession</servlet-name>
+        <servlet-class>ShopSessionServlet</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>ShopSession</servlet-name>
+        <url-pattern>/shopsession</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>LogoutServlet</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>VisitCount</servlet-name>
+        <servlet-class>VisitCountServlet</servlet-class>
+    </servlet>
+    
+     <servlet-mapping>
+        <servlet-name>VisitCount</servlet-name>
+        <url-pattern>/visitcount</url-pattern>
     </servlet-mapping>
 
 </web-app>

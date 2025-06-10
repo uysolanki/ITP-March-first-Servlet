@@ -1,5 +1,6 @@
 
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -35,7 +36,7 @@ public class ShowAllEmployees extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		
 		try {
-			Connection con=MySQLConnectionITP.getConnection();
+			Connection con=MySQLConnectionITP.getConnection(getServletContext());
 			Statement st=con.createStatement();
 			String query="select * from emp";
 			ResultSet rs=st.executeQuery(query);
@@ -60,7 +61,7 @@ public class ShowAllEmployees extends HttpServlet {
 				out.print("<td>"+ rs.getString(2) +"</td>");
 				out.print("<td>"+ rs.getInt(3) +"</td>");
 				out.print("<td><a href='deleteemp?t1=" + rs.getInt(1) + "' class='btn btn-danger'>Delete</a></td>");
-				out.print("<td><a href='deleteemp?t1=" + rs.getInt(1) + "' class='btn btn-secondary'>Update</a></td>");
+				out.print("<td><a href='updateemp?t1=" + rs.getInt(1) + "' class='btn btn-secondary'>Update</a></td>");
 				out.print("</tr>");
 			}
 			out.print("</table>");

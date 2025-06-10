@@ -1,30 +1,26 @@
 
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AddEmployeeServlet
+ * Servlet implementation class VisitCountServlet
  */
-@WebServlet("/AddEmployeeServlet")
-public class AddEmployeeServlet extends HttpServlet {
+@WebServlet("/VisitCountServlet")
+public class VisitCountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddEmployeeServlet() {
+    public VisitCountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,31 +31,33 @@ public class AddEmployeeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
-		int eno=Integer.parseInt(request.getParameter("t1"));
-		String ename=request.getParameter("t2");
-		int salary=Integer.parseInt(request.getParameter("t3"));
 		
-		try {
-			ServletContext context=getServletContext();
-			Connection con=MySQLConnectionITP.getConnection(context);
-			String query="insert into emp values(?,?,?)";
-			PreparedStatement ps=con.prepareStatement(query);
-			ps.setInt(1, eno);
-			ps.setString(2, ename);
-			ps.setInt(3, salary);
+		Cookie cookies[]=request.getCookies();
+		int visit=1;
+		if(cookies==null)
+		{
+			out.print(visit +" Visit");
+			Cookie cookie=new Cookie("hitcount", visit+"");
 			
-			int rows=ps.executeUpdate();
-			if(rows>0)
-			{
-				RequestDispatcher rd=request.getRequestDispatcher("showAllEmployees");
-				rd.forward(request, response);
-			}
-			else
-				out.print("Record Not Inserted");
-		} catch (Exception e) {
-			e.printStackTrace();
+			response.addCookie(cookie);
 		}
-	}
+		else
+		{
+			for(Cookie c:cookies)
+			{
+				if(c.getName().equals("hitcount"))  
+				{
+					visit= Integer.parseInt(c.getValue()); 
+					visit++;
+					out.print(visit +" Visit");
+					c.setValue(visit+"");
+					c.setMaxAge(60*60*24*365);
+					response.addCookie(c);
+				}
+			}
+		}
+		}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
